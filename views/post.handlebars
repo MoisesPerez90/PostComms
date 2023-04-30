@@ -1,0 +1,62 @@
+<header class="bg-dark-subtle">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs d-flex justify-content-between">
+            <div class="row">
+                <li class="nav-item col p-0">
+                    <a class="nav-link active text-success" aria-current="page" href="http://localhost:3001/wall">Go Back</a>
+                </li>
+            </div>
+        </ul>
+    </div>
+</header>
+
+<section class="d-flex flex-column align-items-sm-center">
+
+    <div class="card border-success p-2 my-4 w-100">
+        <div class="card-header badge text-bg-success p-2 fs-4">{{post.title}}</div>
+            <div class="card-body text-success">
+                <p class="card-text">
+                    {{post.body}}
+                </p>
+            </div>
+            <h7 class="card-title"><span>{{post.user.username}}</span> at {{format_date post.updatedAt}} - {{format_time post.updatedAt}}</h7>
+        </div>
+    </div>
+
+    <div class="card card-body d-flex justify-content-center w-75">
+        <div>
+            {{#each post.comments as |comment|}}
+                {{> comments-details}}
+            {{/each}}
+        </div>
+
+
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header bg-success-subtle text-emphasis-success">
+                    <button class="accordion-button collapsed bg-success-subtle text-emphasis-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        Add a new comment
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body d-flex justify-content-center align-items-center">
+                    <form id="add-comment" >
+                        <div class="d-flex justify-content-center align-items-center">
+                            <div class="card-header badge text-bg-success p-2 fs-4">
+                                <label for="comment-content">Content:</label>
+                            </div>
+                            <textarea id="comment-content" class="my-paragraph" name="comment-content" style="min-width: 30rem; min-height: 200px;"></textarea>
+                            <br>
+                            <p id="username-id" style="display: none;">{{id}}</p>
+                        </div>
+                        <button type="submit" class="btn btn-outline-success m-3 p-2">Submit</button> 
+                    </form>
+                </div>
+            </div>
+
+    </div>
+    <script src="../../js/commentUtils.js"></script>
+</section>
+

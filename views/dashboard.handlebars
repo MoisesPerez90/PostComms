@@ -1,0 +1,77 @@
+<header class="bg-dark-subtle">
+    <div class="container-fluid">
+        <ul class="nav nav-tabs d-flex justify-content-between">
+            <div class="row">
+                <li class="nav-item col p-0">
+                    <a class="nav-link text-success" aria-current="page" href="http://localhost:3001/wall">Home</a>
+                </li>
+
+                {{#if loggedIn}}
+                <li class="nav-item col p-0">
+                    <a class="nav-link active text-success" aria-current="page" href="http://localhost:3001/user/{{userPost.id}}">Dashboard</a>
+                </li>
+                <li class="nav-item col p-0">
+                    <button id="logout" class="nav-link text-success">Logout</button>
+                    <script src="../js/logout.js"></script>
+                </li>
+                {{else}}
+                <li class="nav-item col-6 col-sm-3">
+                    <a class="nav-link text-success" href="/login">Login</a>
+                </li>
+                {{/if}}
+            </div>
+
+            <div class="row">
+                {{#if loggedIn}}
+                <li class="nav-item">
+                    <a class="nav-link active text-success" aria-current="page">Username: {{userPost.username}}</a> 
+                </li>
+                {{/if}}
+            </div>
+        </ul>
+    </div>
+    <nav class="navbar">
+        <div class="container-fluid ">
+            <h1> <span class="badge text-bg-success">The Tech Blog</span></h1>
+        </div>
+    </nav>
+</header>
+
+<section>
+
+    {{#each userPost.posts as |post|}}
+    {{> posts-details}}
+    {{/each}}
+    
+
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header bg-success-subtle text-emphasis-success">
+                <button class="accordion-button collapsed bg-success-subtle text-emphasis-success" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    Add a new post
+                </button>
+            </h2>
+
+            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <form id="add-post">
+                        <div class="card border-success mx-auto p-2 my-4" style="max-width: 100rem;">
+                            <div class="card-header badge text-bg-success p-2 fs-4">
+                                <label for="post-title">Title:</label>
+                            </div>
+                            <input type="text" id="post-title" name="post-title"><br>
+                            <div class="card-header badge text-bg-success p-2 fs-4">
+                                <label for="post-content">Content:</label>
+                            </div>
+                            <textarea id="post-content" class="my-paragraph text-wrap" name="post-content"></textarea><br>
+                            <button type="submit">Submit</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/postUtils.js"></script>
+</section>
+

@@ -1,0 +1,11 @@
+
+<div class="card border-success mx-auto p-2 my-4" style="max-width: 100rem; cursor: pointer;" id={{id}} onclick="showComments(this)">
+    <div class="card-header badge text-bg-success p-2 fs-4">{{title}}</div>
+        <div class="card-body text-success">
+            <p class="card-text">
+                {{body}}
+            </p>
+        </div>
+        <h7 class="card-title"><span>{{user.username}}</span> at {{format_date updatedAt}} - {{format_time updatedAt}}</h7>
+    </div>
+</div>

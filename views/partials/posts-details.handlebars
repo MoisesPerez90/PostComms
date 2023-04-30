@@ -1,0 +1,37 @@
+
+        <div class="card border-success mx-auto p-2 my-4" id="dashboard-post" on style="max-width: 100rem;">
+            <div class="card-header badge text-bg-success p-2 fs-4">{{title}}</div>
+                <div class="card-body text-success">
+                    <p class="card-text">
+                        {{body}}
+                    </p>
+                </div>
+                <h7 class="card-title"> Updated at {{format_date updated_at}} - {{format_time updated_at}}</h7>
+            </div>
+
+            <p>
+                <button class="btn btn-sm btn-success" onclick="updateUserPost(this)" id={{id}} type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Edit
+                </button>
+                
+                <button class="btn btn-sm btn-outline-dark" onclick="deleteUserPost(this)" id={{id}}>Delete</button>
+            </p>
+
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <form id="edit-post">
+                        <div class="card border-success mx-auto p-2 my-4" style="max-width: 100rem;">
+                            <div class="card-header badge text-bg-success p-2 fs-4">
+                                <label for="edit-post-title">Title:</label>
+                            </div>
+                            <input type="text" id="edit-post-title" name="edit-post-title"><br>
+                            <div class="card-header badge text-bg-success p-2 fs-4">
+                                <label for="edit-post-content">Content:</label>
+                            </div>
+                            <textarea id="edit-post-content" class="my-paragraph text-wrap" name="edit-post-content"></textarea><br>
+                            <button id={{id}} type="submit">Submit</button> 
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
